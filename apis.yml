@@ -1,0 +1,120 @@
+name: Elastic Stack
+description: APIs for Elastic Stack including Elasticsearch, Kibana, Logstash, and Beats for search, analytics, and data visualization
+image: https://static-www.elastic.co/v3/assets/bltefdd0b53724fa2ce/blt6ae3d6980b5fd629/5bbca1d1af3a954c36f95ed3/logo-elastic.svg
+tags:
+- search
+- analytics
+- logging
+- monitoring
+- observability
+created: '2024'
+modified: '2024'
+url: https://www.elastic.co/
+apis:
+- name: Elasticsearch API
+  description: Distributed search and analytics engine with RESTful API for indexing, searching, and analyzing data
+  image: https://static-www.elastic.co/v3/assets/bltefdd0b53724fa2ce/blt929c7e8c20e73c76/5d0d0394d8ff351753cbf8ec/logo-elasticsearch-64-color.svg
+  humanURL: https://www.elastic.co/elasticsearch/
+  baseURL: https://localhost:9200
+  tags:
+  - search
+  - indexing
+  - analytics
+  - database
+  properties:
+  - type: documentation
+    url: https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html
+  - type: openapi
+    url: https://raw.githubusercontent.com/elastic/elasticsearch-specification/main/output/openapi/elasticsearch-openapi.json
+  - type: getting-started
+    url: https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html
+  - type: authentication
+    url: https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api.html
+- name: Kibana API
+  description: Data visualization and exploration tool API for Elasticsearch
+  image: https://static-www.elastic.co/v3/assets/bltefdd0b53724fa2ce/blt4466841eed0bf232/5d0d039421f3f574c2c6ea94/logo-kibana-64-color.svg
+  humanURL: https://www.elastic.co/kibana/
+  baseURL: https://localhost:5601/api
+  tags:
+  - visualization
+  - dashboards
+  - ui
+  - analytics
+  properties:
+  - type: documentation
+    url: https://www.elastic.co/guide/en/kibana/current/api.html
+  - type: saved-objects-api
+    url: https://www.elastic.co/guide/en/kibana/current/saved-objects-api.html
+  - type: spaces-api
+    url: https://www.elastic.co/guide/en/kibana/current/spaces-api.html
+  - type: alerting-api
+    url: https://www.elastic.co/guide/en/kibana/current/alerting-apis.html
+- name: Logstash API
+  description: Server-side data processing pipeline API for ingesting and transforming data
+  image: https://static-www.elastic.co/v3/assets/bltefdd0b53724fa2ce/blt0c0d9ab08c5f5338/5d0d03946b13747ea1f00227/logo-logstash-64-color.svg
+  humanURL: https://www.elastic.co/logstash/
+  baseURL: https://localhost:9600
+  tags:
+  - data-pipeline
+  - ingestion
+  - transformation
+  - etl
+  properties:
+  - type: documentation
+    url: https://www.elastic.co/guide/en/logstash/current/monitoring-logstash.html
+  - type: api-reference
+    url: https://www.elastic.co/guide/en/logstash/current/node-info-api.html
+  - type: plugins
+    url: https://www.elastic.co/guide/en/logstash/current/input-plugins.html
+- name: Fleet API
+  description: Central management API for Elastic Agents and Beats
+  humanURL: https://www.elastic.co/guide/en/fleet/current/index.html
+  baseURL: https://localhost:5601/api/fleet
+  tags:
+  - agent-management
+  - monitoring
+  - configuration
+  properties:
+  - type: documentation
+    url: https://www.elastic.co/guide/en/fleet/current/fleet-api-docs.html
+  - type: agents-api
+    url: https://www.elastic.co/guide/en/fleet/current/fleet-agents.html
+- name: Enterprise Search API
+  description: Search experience API for websites and applications
+  humanURL: https://www.elastic.co/enterprise-search/
+  baseURL: https://localhost:3002/api
+  tags:
+  - search
+  - enterprise
+  - workplace-search
+  - app-search
+  properties:
+  - type: documentation
+    url: https://www.elastic.co/guide/en/enterprise-search/current/api-reference.html
+  - type: app-search-api
+    url: https://www.elastic.co/guide/en/app-search/current/api-reference.html
+  - type: workplace-search-api
+    url: https://www.elastic.co/guide/en/workplace-search/current/workplace-search-api.html
+common:
+- type: support
+  url: https://www.elastic.co/support
+- type: pricing
+  url: https://www.elastic.co/pricing
+- type: blog
+  url: https://www.elastic.co/blog
+- type: github
+  url: https://github.com/elastic
+- type: community
+  url: https://discuss.elastic.co
+- type: training
+  url: https://www.elastic.co/training
+- type: status
+  url: https://status.elastic.co
+- type: terms-of-service
+  url: https://www.elastic.co/agreements
+- type: privacy-policy
+  url: https://www.elastic.co/legal/privacy-statement
+maintainers:
+- name: Elastic
+  email: info@elastic.co
+  url: https://www.elastic.co
