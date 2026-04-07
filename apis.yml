@@ -9,11 +9,11 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Search
   - Analytics
   - Logging
   - Monitoring
   - Observability
+  - Search
 url: https://www.elastic.co/elastic-stack/
 created: '2024-01-01'
 modified: '2026-03-16'
@@ -29,9 +29,9 @@ apis:
     humanURL: https://www.elastic.co/elasticsearch/
     baseURL: https://localhost:9200
     tags:
-      - Search
       - Analytics
       - Indexing
+      - Search
     properties:
       - type: Documentation
         url: https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html
@@ -43,9 +43,9 @@ apis:
     humanURL: https://www.elastic.co/kibana/
     baseURL: https://localhost:5601/api
     tags:
-      - Visualization
-      - Dashboards
       - Analytics
+      - Dashboards
+      - Visualization
     properties:
       - type: Documentation
         url: https://www.elastic.co/guide/en/kibana/current/api.html
