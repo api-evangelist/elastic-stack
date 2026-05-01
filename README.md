@@ -1,114 +1,72 @@
 # Elastic Stack (elastic-stack)
-APIs for Elastic Stack including Elasticsearch, Kibana, Logstash, and Beats for search, analytics, and data visualization
 
-**URL:** [Visit APIs.json URL](https://www.elastic.co/)
+The Elastic Stack (formerly known as the ELK Stack) is a collection of open-source products from Elastic designed to help users take data from any source, in any format, and search, analyze, and visualize that data in real-time. The stack includes Elasticsearch for search and analytics, Kibana for visualization, Logstash for data processing, and Beats for data shipping.
 
-## Tags:
+**URL:** [https://www.elastic.co/elastic-stack/](https://www.elastic.co/elastic-stack/)
 
- - search, analytics, logging, monitoring, observability
+## Scope
+
+- **Type:** Index
+- **Position:** Consumer
+- **Access:** 3rd-Party
+
+## Tags
+
+- Analytics, Logging, Monitoring, Observability, Search
 
 ## Timestamps
 
-- **Created:** 2024 
-- **Modified:** 2024 
+- **Created:** 2024-01-01
+- **Modified:** 2026-04-28
 
 ## APIs
 
 ### Elasticsearch API
-Distributed search and analytics engine with RESTful API for indexing, searching, and analyzing data
+
+Distributed search and analytics engine with RESTful API for indexing, searching, and analyzing data at scale.
 
 **Human URL:** [https://www.elastic.co/elasticsearch/](https://www.elastic.co/elasticsearch/)
 
+**Base URL:** https://localhost:9200
 
-#### Tags:
+#### Tags
 
- - search, indexing, analytics, database
+- Analytics, Indexing, Search
 
 #### Properties
 
-- [documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html)
-- [openapi](https://raw.githubusercontent.com/elastic/elasticsearch-specification/main/output/openapi/elasticsearch-openapi.json)
-- [getting-started](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)
-- [authentication](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api.html)
+- [Documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html)
 
 ### Kibana API
-Data visualization and exploration tool API for Elasticsearch
+
+Data visualization and exploration tool API for Elasticsearch, providing dashboards, saved objects, alerting, and spaces management.
 
 **Human URL:** [https://www.elastic.co/kibana/](https://www.elastic.co/kibana/)
 
+**Base URL:** https://localhost:5601/api
 
-#### Tags:
+#### Tags
 
- - visualization, dashboards, ui, analytics
-
-#### Properties
-
-- [documentation](https://www.elastic.co/guide/en/kibana/current/api.html)
-- [saved-objects-api](https://www.elastic.co/guide/en/kibana/current/saved-objects-api.html)
-- [spaces-api](https://www.elastic.co/guide/en/kibana/current/spaces-api.html)
-- [alerting-api](https://www.elastic.co/guide/en/kibana/current/alerting-apis.html)
-
-### Logstash API
-Server-side data processing pipeline API for ingesting and transforming data
-
-**Human URL:** [https://www.elastic.co/logstash/](https://www.elastic.co/logstash/)
-
-
-#### Tags:
-
- - data-pipeline, ingestion, transformation, etl
+- Analytics, Dashboards, Visualization
 
 #### Properties
 
-- [documentation](https://www.elastic.co/guide/en/logstash/current/monitoring-logstash.html)
-- [api-reference](https://www.elastic.co/guide/en/logstash/current/node-info-api.html)
-- [plugins](https://www.elastic.co/guide/en/logstash/current/input-plugins.html)
-
-### Fleet API
-Central management API for Elastic Agents and Beats
-
-**Human URL:** [https://www.elastic.co/guide/en/fleet/current/index.html](https://www.elastic.co/guide/en/fleet/current/index.html)
-
-
-#### Tags:
-
- - agent-management, monitoring, configuration
-
-#### Properties
-
-- [documentation](https://www.elastic.co/guide/en/fleet/current/fleet-api-docs.html)
-- [agents-api](https://www.elastic.co/guide/en/fleet/current/fleet-agents.html)
-
-### Enterprise Search API
-Search experience API for websites and applications
-
-**Human URL:** [https://www.elastic.co/enterprise-search/](https://www.elastic.co/enterprise-search/)
-
-
-#### Tags:
-
- - search, enterprise, workplace-search, app-search
-
-#### Properties
-
-- [documentation](https://www.elastic.co/guide/en/enterprise-search/current/api-reference.html)
-- [app-search-api](https://www.elastic.co/guide/en/app-search/current/api-reference.html)
-- [workplace-search-api](https://www.elastic.co/guide/en/workplace-search/current/workplace-search-api.html)
+- [Documentation](https://www.elastic.co/guide/en/kibana/current/api.html)
 
 ## Common Properties
 
-- [support](https://www.elastic.co/support)
-- [pricing](https://www.elastic.co/pricing)
-- [blog](https://www.elastic.co/blog)
-- [github](https://github.com/elastic)
-- [community](https://discuss.elastic.co)
-- [training](https://www.elastic.co/training)
-- [status](https://status.elastic.co)
-- [terms-of-service](https://www.elastic.co/agreements)
-- [privacy-policy](https://www.elastic.co/legal/privacy-statement)
+- [Website](https://www.elastic.co/)
+- [Documentation](https://www.elastic.co/guide/index.html)
+- [Pricing](https://www.elastic.co/pricing)
+- [Blog](https://www.elastic.co/blog)
+- [Support](https://www.elastic.co/support)
+- [Status](https://status.elastic.co)
+- [TermsOfService](https://www.elastic.co/agreements)
+- [PrivacyPolicy](https://www.elastic.co/legal/privacy-statement)
+- [GitHubOrganization](https://github.com/elastic)
 
 ## Maintainers
 
-**FN:** Elastic
+**FN:** Kin Lane
 
-**Email:** info@elastic.co
+**Email:** kin@apievangelist.com
