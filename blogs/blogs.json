@@ -3,11 +3,11 @@
   "feeds": [
     {
       "source": "https://www.elastic.co/blog",
-      "feed_url": "https://www.elastic.co/blog/feed",
-      "saved": 10,
-      "title": "Elastic Blog - Elasticsearch, Kibana, and ELK Stack"
+      "feed_url": "https://www.elastic.co/blog/feed/",
+      "title": "Elastic Blog - Elasticsearch, Kibana, and ELK Stack",
+      "saved": 9
     }
   ],
-  "post_count": 10,
-  "fetched": "2026-05-03T23:27:29Z"
+  "post_count": 19,
+  "fetched": "2026-05-09T20:17:51Z"
 }
