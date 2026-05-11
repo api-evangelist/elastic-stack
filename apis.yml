@@ -70,6 +70,10 @@ common:
     url: https://www.elastic.co/legal/privacy-statement
   - type: GitHubOrganization
     url: https://github.com/elastic
+  - type: Integrations
+    url: https://www.elastic.co/integrations
+integrations:
+  - name: Become a partner
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
