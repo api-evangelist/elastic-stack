@@ -1,0 +1,780 @@
+"""
+Elastic Stack GraphQL Schema
+Covers Elasticsearch, Kibana, Logstash, and Beats concepts.
+Source: https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html
+"""
+
+scalar JSON
+scalar DateTime
+
+# ─── Index and Storage ────────────────────────────────────────────────────────
+
+"""Top-level index descriptor."""
+type Index {
+  name: String!
+  uuid: String
+  status: String
+  health: String
+  primaryShards: Int
+  replicaShards: Int
+  details: IndexDetails
+  mapping: IndexMapping
+  settings: IndexSettings
+  aliases: [IndexAlias!]
+  stats: IndexStats
+}
+
+"""Detailed metadata about an Elasticsearch index."""
+type IndexDetails {
+  creationDate: DateTime
+  numberOfShards: Int
+  numberOfReplicas: Int
+  providedName: String
+  version: JSON
+  routingNumShards: Int
+}
+
+"""Mapping configuration for an index."""
+type IndexMapping {
+  dynamic: String
+  properties: [MappingField!]
+  dynamicTemplates: [JSON]
+}
+
+"""Settings for an index including analysis, refresh intervals, and replicas."""
+type IndexSettings {
+  numberOfShards: Int
+  numberOfReplicas: Int
+  refreshInterval: String
+  maxResultWindow: Int
+  analysis: JSON
+  codec: String
+  routing: JSON
+}
+
+"""An alias pointing to one or more indices."""
+type IndexAlias {
+  name: String!
+  index: String
+  filter: JSON
+  routing: String
+  isWriteIndex: Boolean
+}
+
+"""Statistics for an index including document count, store size, and operations."""
+type IndexStats {
+  docsCount: Int
+  docsDeleted: Int
+  storeSizeBytes: Int
+  primaryStoreSizeBytes: Int
+  indexingOpsCount: Int
+  searchOpsCount: Int
+  getOpsCount: Int
+  refreshCount: Int
+  flushCount: Int
+  mergeCount: Int
+}
+
+# ─── Documents ────────────────────────────────────────────────────────────────
+
+"""A document stored in an Elasticsearch index."""
+type Document {
+  id: String!
+  index: String!
+  version: Int
+  seqNo: Int
+  primaryTerm: Int
+  found: Boolean
+  source: DocumentSource
+  meta: DocumentMeta
+  fields: DocumentFields
+}
+
+"""The _source body of a document."""
+type DocumentSource {
+  raw: JSON
+}
+
+"""Document-level metadata (_id, _index, _type, routing)."""
+type DocumentMeta {
+  id: String!
+  index: String!
+  routing: String
+  version: Int
+  seqNo: Int
+  primaryTerm: Int
+}
+
+"""Stored fields returned alongside or instead of _source."""
+type DocumentFields {
+  fields: JSON
+}
+
+# ─── Search ───────────────────────────────────────────────────────────────────
+
+"""Top-level result wrapper for a search request."""
+type SearchResult {
+  took: Int
+  timedOut: Boolean
+  shards: ShardInfo
+  hits: [SearchHit!]
+  total: SearchTotal
+  scrollId: String
+  aggregations: JSON
+  suggest: JSON
+  profile: JSON
+}
+
+"""Total hits metadata (count and relation)."""
+type SearchTotal {
+  value: Int!
+  relation: String!
+}
+
+"""A single search hit within a result set."""
+type SearchHit {
+  index: String!
+  id: String!
+  score: Float
+  source: JSON
+  fields: JSON
+  highlight: JSON
+  sort: [JSON]
+  details: HitDetails
+  innerHits: JSON
+}
+
+"""Detailed scoring and explanation for a search hit."""
+type HitDetails {
+  explanation: JSON
+  matchedQueries: [String]
+  seqNo: Int
+  primaryTerm: Int
+  version: Int
+}
+
+"""Root container for a search query."""
+type SearchQuery {
+  query: QueryClause
+  size: Int
+  from: Int
+  sort: [JSON]
+  source: JSON
+  aggregations: JSON
+  suggest: JSON
+  highlight: JSON
+  scriptFields: JSON
+  postFilter: QueryClause
+  trackTotalHits: Boolean
+  trackScores: Boolean
+  timeout: String
+  minScore: Float
+}
+
+"""A generic query clause that may hold any query DSL structure."""
+type QueryClause {
+  type: String!
+  raw: JSON
+}
+
+# ─── Query Types ──────────────────────────────────────────────────────────────
+
+"""A boolean compound query combining must, should, must_not, and filter clauses."""
+type BoolQuery {
+  must: [QueryClause]
+  should: [QueryClause]
+  mustNot: [QueryClause]
+  filter: [QueryClause]
+  minimumShouldMatch: Int
+  boost: Float
+}
+
+"""A term-level query for exact value matching."""
+type TermQuery {
+  field: String!
+  value: JSON!
+  boost: Float
+  caseInsensitive: Boolean
+}
+
+"""A full-text match query."""
+type MatchQuery {
+  field: String!
+  query: String!
+  operator: String
+  fuzziness: String
+  prefixLength: Int
+  analyzer: String
+  zeroTermsQuery: String
+  autoGenerateSynonymsPhraseQuery: Boolean
+  boost: Float
+}
+
+"""A range query for numeric, date, or string ranges."""
+type RangeQuery {
+  field: String!
+  gte: JSON
+  gt: JSON
+  lte: JSON
+  lt: JSON
+  format: String
+  timeZone: String
+  boost: Float
+  relation: String
+}
+
+"""A geo-distance or geo-bounding-box query."""
+type GeoQuery {
+  type: String!
+  field: String!
+  lat: Float
+  lon: Float
+  distance: String
+  topLeft: JSON
+  bottomRight: JSON
+  boost: Float
+}
+
+"""A nested query for querying nested objects."""
+type NestedQuery {
+  path: String!
+  query: QueryClause
+  scoreMode: String
+  ignoreUnmapped: Boolean
+}
+
+"""A script query for custom scoring logic."""
+type ScriptQuery {
+  script: Script
+  boost: Float
+}
+
+"""A percolate query that matches stored queries against a document."""
+type PercolateQuery {
+  field: String!
+  document: JSON
+  index: String
+  id: String
+}
+
+# ─── Aggregations ─────────────────────────────────────────────────────────────
+
+"""Base aggregation descriptor."""
+type Aggregation {
+  name: String!
+  type: String!
+  raw: JSON
+  buckets: [Bucket]
+  value: Float
+  subAggregations: [SubAggregation]
+}
+
+"""A bucket aggregation grouping documents into buckets."""
+type BucketAggregation {
+  name: String!
+  type: String!
+  buckets: [Bucket!]
+  docCountError: Int
+  sumOtherDocCount: Int
+}
+
+"""A metric aggregation computing a numeric metric over documents."""
+type MetricAggregation {
+  name: String!
+  type: String!
+  value: Float
+  values: JSON
+}
+
+"""A pipeline aggregation computed over the output of other aggregations."""
+type PipelineAggregation {
+  name: String!
+  type: String!
+  bucketsPath: JSON
+  value: Float
+  values: JSON
+}
+
+"""Terms aggregation grouping documents by field value."""
+type Terms {
+  field: String!
+  size: Int
+  order: JSON
+  minDocCount: Int
+  missing: JSON
+  include: JSON
+  exclude: JSON
+  showTermDocCountError: Boolean
+}
+
+"""Date histogram aggregation bucketing documents by date interval."""
+type DateHistogram {
+  field: String!
+  calendarInterval: String
+  fixedInterval: String
+  format: String
+  timeZone: String
+  offset: String
+  minDocCount: Int
+  extendedBounds: JSON
+  hardBounds: JSON
+}
+
+"""Range aggregation bucketing documents by numeric or date ranges."""
+type RangeAgg {
+  field: String!
+  ranges: [JSON!]
+  keyed: Boolean
+}
+
+"""Nested aggregation for nested document objects."""
+type Nested {
+  path: String!
+}
+
+"""Reverse nested aggregation to return to the parent document context."""
+type Reverse {
+  path: String
+}
+
+"""A single bucket result from a bucket aggregation."""
+type Bucket {
+  key: JSON!
+  keyAsString: String
+  docCount: Int!
+  details: BucketDetails
+  aggregations: [SubAggregation]
+}
+
+"""Additional metadata for a bucket."""
+type BucketDetails {
+  from: JSON
+  to: JSON
+  fromAsString: String
+  toAsString: String
+  score: Float
+}
+
+"""A filter applied within a bucket aggregation."""
+type BucketFilter {
+  filter: QueryClause!
+}
+
+"""A nested sub-aggregation inside a parent aggregation."""
+type SubAggregation {
+  name: String!
+  type: String!
+  value: Float
+  values: JSON
+  buckets: [Bucket]
+}
+
+# ─── Mappings and Fields ──────────────────────────────────────────────────────
+
+"""Complete mapping definition for an index."""
+type Mapping {
+  index: String!
+  dynamic: String
+  fields: [MappingField!]
+  dynamicTemplates: [JSON]
+  runtimeFields: [MappingField]
+}
+
+"""A single field definition within an index mapping."""
+type MappingField {
+  name: String!
+  type: FieldType
+  mapping: FieldMapping
+  properties: [MappingField]
+}
+
+"""The data type of a mapped field."""
+type FieldType {
+  name: String!
+  isKeyword: Boolean
+  isText: Boolean
+  isNumeric: Boolean
+  isDate: Boolean
+  isGeo: Boolean
+  isNested: Boolean
+  isObject: Boolean
+}
+
+"""Detailed mapping configuration for a field."""
+type FieldMapping {
+  type: String!
+  index: Boolean
+  store: Boolean
+  analyzer: String
+  searchAnalyzer: String
+  normalizer: String
+  format: String
+  boost: Float
+  nullValue: JSON
+  copyTo: [String]
+  fields: [MappingField]
+  docValues: Boolean
+  ignoreMalformed: Boolean
+  coerce: Boolean
+  scalingFactor: Float
+  dims: Int
+  similarity: String
+}
+
+# ─── Scripting ────────────────────────────────────────────────────────────────
+
+"""A Painless script reference used in queries, aggregations, or ingest."""
+type Script {
+  id: String
+  source: String
+  lang: String
+  params: JSON
+}
+
+"""Full details of a stored Painless script."""
+type ScriptDetails {
+  id: String!
+  lang: String!
+  source: String!
+  params: JSON
+  context: String
+  description: String
+}
+
+# ─── Ingest and Pipelines ─────────────────────────────────────────────────────
+
+"""A Logstash-style processing pipeline definition."""
+type Pipeline {
+  id: String!
+  description: String
+  version: Int
+  processors: [PipelineProcessor!]
+  onFailure: [PipelineProcessor]
+}
+
+"""An individual processor step within an ingest pipeline."""
+type PipelineProcessor {
+  type: String!
+  tag: String
+  description: String
+  ignoreFailure: Boolean
+  onFailure: [PipelineProcessor]
+  config: JSON
+}
+
+"""An Elasticsearch ingest pipeline for pre-processing documents."""
+type IngestPipeline {
+  id: String!
+  description: String
+  version: Int
+  processors: [PipelineProcessor!]
+  onFailure: [PipelineProcessor]
+}
+
+# ─── Cluster and Node Management ──────────────────────────────────────────────
+
+"""Top-level cluster descriptor."""
+type Cluster {
+  name: String!
+  status: String
+  numberOfNodes: Int
+  numberOfDataNodes: Int
+  activePrimaryShards: Int
+  activeShards: Int
+  relocatingShards: Int
+  initializingShards: Int
+  unassignedShards: Int
+  pendingTasks: Int
+  taskMaxWaitingTime: String
+  activeShardsPercent: Float
+  details: ClusterDetails
+  nodes: [NodeDetails]
+}
+
+"""Detailed cluster health and version metadata."""
+type ClusterDetails {
+  uuid: String!
+  version: String
+  buildHash: String
+  buildDate: DateTime
+  luceneVersion: String
+  minimumWireVersion: String
+  minimumIndexCompatibilityVersion: String
+}
+
+"""Details for a single Elasticsearch node."""
+type NodeDetails {
+  id: String!
+  name: String!
+  host: String
+  ip: String
+  version: String
+  roles: [String]
+  attributes: JSON
+  osStats: JSON
+  jvmStats: JSON
+  processStats: JSON
+  threadPoolStats: JSON
+  fsStats: JSON
+  transportStats: JSON
+  httpStats: JSON
+  indices: JSON
+}
+
+"""Shard allocation and routing information."""
+type ShardInfo {
+  total: Int!
+  successful: Int!
+  skipped: Int
+  failed: Int
+  failures: [JSON]
+}
+
+"""Segment-level information for index storage diagnostics."""
+type SegmentInfo {
+  count: Int!
+  memoryInBytes: Int
+  termsMemoryInBytes: Int
+  storedFieldsMemoryInBytes: Int
+  termVectorsMemoryInBytes: Int
+  normsMemoryInBytes: Int
+  pointsMemoryInBytes: Int
+  docValuesMemoryInBytes: Int
+  indexWriterMemoryInBytes: Int
+  versionMapMemoryInBytes: Int
+  fixedBitSetMemoryInBytes: Int
+  maxUnsafeAutoIdTimestamp: Int
+  fileSizes: JSON
+}
+
+# ─── Alerting and Watcher ─────────────────────────────────────────────────────
+
+"""An Elasticsearch Watcher watch definition."""
+type Watch {
+  id: String!
+  status: WatchStatus
+  details: WatchDetails
+  trigger: JSON
+  input: JSON
+  condition: AlertCondition
+  actions: [WatchAction!]
+  metadata: JSON
+  throttlePeriod: String
+}
+
+"""Runtime status of a watch."""
+type WatchStatus {
+  version: Int
+  state: String
+  lastChecked: DateTime
+  lastMetCondition: DateTime
+  lastTriggerTime: DateTime
+  executionState: String
+  actions: JSON
+}
+
+"""Metadata and configuration details for a watch."""
+type WatchDetails {
+  id: String!
+  version: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  triggerType: String
+  inputType: String
+}
+
+"""An action taken when a watch condition is met."""
+type WatchAction {
+  id: String!
+  type: String!
+  throttlePeriod: String
+  condition: AlertCondition
+  config: JSON
+}
+
+"""A condition evaluated to determine if a watch should fire."""
+type AlertCondition {
+  type: String!
+  script: Script
+  compare: JSON
+  arrayCompare: JSON
+  never: Boolean
+  always: Boolean
+}
+
+# ─── Machine Learning ─────────────────────────────────────────────────────────
+
+"""An Elasticsearch machine learning job configuration."""
+type MachineLearning {
+  jobId: String!
+  jobType: String
+  description: String
+  createTime: DateTime
+  finishedTime: DateTime
+  status: String
+  analysisConfig: JSON
+  dataDescription: JSON
+  modelSizeStats: JSON
+  dataCounts: JSON
+  modelSnapshotId: String
+  results: [Anomaly]
+  forecasts: [Forecast]
+}
+
+"""A single anomaly record detected by an ML job."""
+type Anomaly {
+  jobId: String!
+  timestamp: DateTime!
+  anomalyScore: Float!
+  probability: Float
+  bucketSpan: Int
+  byFieldName: String
+  byFieldValue: String
+  overFieldName: String
+  overFieldValue: String
+  partitionFieldName: String
+  partitionFieldValue: String
+  functionDescription: String
+  typical: [Float]
+  actual: [Float]
+  fieldName: String
+  causes: [JSON]
+}
+
+"""A forecast produced by an Elasticsearch ML job."""
+type Forecast {
+  forecastId: String!
+  jobId: String!
+  status: String
+  createTime: DateTime
+  startTime: DateTime
+  endTime: DateTime
+  duration: String
+  processedRecordCount: Int
+  memoryBytes: Int
+  messages: [String]
+}
+
+# ─── Snapshots ────────────────────────────────────────────────────────────────
+
+"""A snapshot of one or more indices stored in a snapshot repository."""
+type Snapshot {
+  id: String!
+  repository: String!
+  indices: [String!]
+  state: String
+  startTime: DateTime
+  endTime: DateTime
+  durationInMillis: Int
+  shards: ShardInfo
+  failures: [JSON]
+  includeGlobalState: Boolean
+  metadata: JSON
+  version: String
+  versionId: Int
+  featureStates: [JSON]
+}
+
+# ─── Security ─────────────────────────────────────────────────────────────────
+
+"""An Elasticsearch API key for programmatic authentication."""
+type APIKey {
+  id: String!
+  name: String!
+  creation: DateTime
+  expiration: DateTime
+  invalidated: Boolean
+  username: String
+  realmName: String
+  metadata: JSON
+  roleDescriptors: JSON
+  limitedBy: [JSON]
+}
+
+"""A bearer token issued for user or service authentication."""
+type Token {
+  accessToken: String!
+  type: String
+  expiresIn: Int
+  scope: String
+  authentication: JSON
+  kerberosChallengeResponse: String
+}
+
+# ─── Root Operations ──────────────────────────────────────────────────────────
+
+type Query {
+  """Get an index by name."""
+  index(name: String!): Index
+
+  """List all indices matching an optional pattern."""
+  indices(pattern: String): [Index!]
+
+  """Get a document by index and ID."""
+  document(index: String!, id: String!): Document
+
+  """Execute a search query against one or more indices."""
+  search(indices: [String!], query: JSON, size: Int, from: Int): SearchResult
+
+  """Get cluster health and metadata."""
+  cluster: Cluster
+
+  """List all ingest pipelines."""
+  ingestPipelines: [IngestPipeline!]
+
+  """Get a single ingest pipeline by ID."""
+  ingestPipeline(id: String!): IngestPipeline
+
+  """List ML jobs."""
+  mlJobs: [MachineLearning!]
+
+  """Get ML job anomalies."""
+  anomalies(jobId: String!): [Anomaly!]
+
+  """List snapshots in a repository."""
+  snapshots(repository: String!): [Snapshot!]
+
+  """List API keys."""
+  apiKeys(username: String): [APIKey!]
+
+  """List watches."""
+  watches: [Watch!]
+
+  """Get a watch by ID."""
+  watch(id: String!): Watch
+}
+
+type Mutation {
+  """Create or update an index."""
+  upsertIndex(name: String!, settings: JSON, mappings: JSON): Index
+
+  """Delete an index."""
+  deleteIndex(name: String!): Boolean
+
+  """Index a document."""
+  indexDocument(index: String!, id: String, source: JSON!): Document
+
+  """Delete a document by ID."""
+  deleteDocument(index: String!, id: String!): Boolean
+
+  """Create or update an ingest pipeline."""
+  upsertIngestPipeline(id: String!, description: String, processors: JSON!): IngestPipeline
+
+  """Delete an ingest pipeline."""
+  deleteIngestPipeline(id: String!): Boolean
+
+  """Create a watch."""
+  upsertWatch(id: String!, trigger: JSON!, input: JSON, condition: JSON, actions: JSON!): Watch
+
+  """Delete a watch."""
+  deleteWatch(id: String!): Boolean
+
+  """Create an API key."""
+  createAPIKey(name: String!, expiration: String, roleDescriptors: JSON): APIKey
+
+  """Invalidate an API key."""
+  invalidateAPIKey(id: String!): Boolean
+
+  """Create a snapshot."""
+  createSnapshot(repository: String!, name: String!, indices: [String]): Snapshot
+}
