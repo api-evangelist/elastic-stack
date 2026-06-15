@@ -1,0 +1,207 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Elasticsearch API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Get cluster health",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://localhost:9200/_cluster/health"
+      },
+      "docs": "Get cluster health"
+    },
+    {
+      "info": {
+        "name": "Search documents in an index",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://localhost:9200/:index/_search",
+        "params": [
+          {
+            "name": "index",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Search documents in an index"
+    },
+    {
+      "info": {
+        "name": "Search documents in an index with request body",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://localhost:9200/:index/_search",
+        "params": [
+          {
+            "name": "index",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Search documents in an index with request body"
+    },
+    {
+      "info": {
+        "name": "Get document by ID",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://localhost:9200/:index/_doc/:id",
+        "params": [
+          {
+            "name": "index",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get document by ID"
+    },
+    {
+      "info": {
+        "name": "Index document with explicit ID",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://localhost:9200/:index/_doc/:id",
+        "params": [
+          {
+            "name": "index",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Index document with explicit ID"
+    },
+    {
+      "info": {
+        "name": "Delete document by ID",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://localhost:9200/:index/_doc/:id",
+        "params": [
+          {
+            "name": "index",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Delete document by ID"
+    },
+    {
+      "info": {
+        "name": "Bulk operations",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://localhost:9200/_bulk",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Bulk operations"
+    },
+    {
+      "info": {
+        "name": "Create index",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://localhost:9200/:index",
+        "params": [
+          {
+            "name": "index",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create index"
+    },
+    {
+      "info": {
+        "name": "Delete index",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://localhost:9200/:index",
+        "params": [
+          {
+            "name": "index",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Delete index"
+    },
+    {
+      "info": {
+        "name": "Get index settings",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://localhost:9200/:index/_settings",
+        "params": [
+          {
+            "name": "index",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get index settings"
+    }
+  ],
+  "bundled": true
+}
