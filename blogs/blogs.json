@@ -2,17 +2,20 @@
   "repo": "elastic-stack",
   "feeds": [
     {
-      "source": "https://www.elastic.co/blog/feed/",
-      "error": "HTTPError"
+      "source": "https://www.elastic.co/blog/feed",
+      "feed_url": "https://www.elastic.co/blog/feed",
+      "title": "",
+      "saved": 2,
+      "method": "feed"
     },
     {
       "source": "https://www.elastic.co/pricing",
-      "feed_url": "https://www.elastic.co/pricing",
+      "feed_url": "https://www.elastic.co/pricing/blog/feed/",
       "title": "",
       "saved": 0,
-      "method": "none"
+      "method": "discovered"
     }
   ],
-  "post_count": 50,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 56,
+  "fetched": "2026-06-27T12:03:07Z"
 }
