@@ -5,7 +5,14 @@
       "source": "https://www.elastic.co/blog/feed",
       "feed_url": "https://www.elastic.co/blog/feed",
       "title": "",
-      "saved": 2,
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.elastic.co/pricing/blog/feed/",
+      "feed_url": "https://www.elastic.co/pricing/blog/feed/",
+      "title": "",
+      "saved": 0,
       "method": "feed"
     },
     {
@@ -16,6 +23,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 56,
-  "fetched": "2026-06-27T12:03:07Z"
+  "post_count": 89,
+  "fetched": "2026-07-11T11:50:51Z"
 }
