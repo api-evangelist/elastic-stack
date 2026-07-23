@@ -1,0 +1,67 @@
+openapi: 3.1.0
+info:
+  title: Elasticsearch Bulk Doc API
+  description: Distributed search and analytics engine REST API for indexing, searching, and analyzing data at scale. Endpoints are derived from the public Elasticsearch REST APIs reference and represent the most commonly used operations.
+  version: 1.0.0
+  x-generated-from: https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://localhost:9200
+  description: Default local Elasticsearch endpoint
+tags:
+- name: Doc
+paths:
+  /{index}/_doc/{id}:
+    parameters:
+    - name: index
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Get document by ID
+      operationId: getDocument
+      responses:
+        '200':
+          description: Document response
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Doc
+    put:
+      summary: Index document with explicit ID
+      operationId: putDocument
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Index response
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Doc
+    delete:
+      summary: Delete document by ID
+      operationId: deleteDocument
+      responses:
+        '200':
+          description: Delete response
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Doc

@@ -1,0 +1,50 @@
+openapi: 3.1.0
+info:
+  title: Elasticsearch Bulk Elasticsearch API API
+  description: Distributed search and analytics engine REST API for indexing, searching, and analyzing data at scale. Endpoints are derived from the public Elasticsearch REST APIs reference and represent the most commonly used operations.
+  version: 1.0.0
+  x-generated-from: https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://localhost:9200
+  description: Default local Elasticsearch endpoint
+tags:
+- name: Elasticsearch API
+paths:
+  /{index}:
+    parameters:
+    - name: index
+      in: path
+      required: true
+      schema:
+        type: string
+    put:
+      summary: Create index
+      operationId: createIndex
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Index creation response
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Elasticsearch API
+    delete:
+      summary: Delete index
+      operationId: deleteIndex
+      responses:
+        '200':
+          description: Index deletion response
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Elasticsearch API
