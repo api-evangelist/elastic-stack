@@ -6,7 +6,19 @@ description: The Elastic Stack (formerly known as the ELK Stack) is a collection
   includes Elasticsearch for search and analytics, Kibana for visualization, Logstash
   for data processing, and Beats for data shipping.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/elastic-stack.png
 tags:
 - Analytics
 - Logging
@@ -20,27 +32,11 @@ position: Consumer
 access: 3rd-Party
 specificationVersion: '0.19'
 apis:
-- aid: elastic-stack:elasticsearch-api
-  name: Elasticsearch API
-  description: Distributed search and analytics engine with RESTful API for indexing,
-    searching, and analyzing data at scale.
-  humanURL: https://www.elastic.co/elasticsearch/
-  baseURL: https://localhost:9200
-  tags:
-  - Analytics
-  - Indexing
-  - Search
-  properties:
-  - type: Documentation
-    url: https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html
-  - url: openapi/elastic-stack-openapi.yml
-    type: OpenAPI
-  - url: graphql/elastic-stack-graphql.md
-    type: GraphQL
 - aid: elastic-stack:kibana-api
   name: Kibana API
-  description: Data visualization and exploration tool API for Elasticsearch, providing
-    dashboards, saved objects, alerting, and spaces management.
+  description: >-
+    Data visualization and exploration tool API for Elasticsearch, providing dashboards, saved objects,
+    alerting, and spaces management.
   humanURL: https://www.elastic.co/kibana/
   baseURL: https://localhost:5601/api
   tags:
@@ -50,6 +46,90 @@ apis:
   properties:
   - type: Documentation
     url: https://www.elastic.co/guide/en/kibana/current/api.html
+- aid: elastic-stack:elastic-stack-bulk-api
+  name: Elastic Stack Bulk API
+  description: The Bulk API from Elastic Stack — 1 operation(s) for bulk.
+  humanURL: https://www.elastic.co/elasticsearch/
+  baseURL: https://localhost:9200
+  tags:
+  - Bulk
+  properties:
+  - type: OpenAPI
+    url: openapi/elastic-stack-bulk-api-openapi.yml
+  - type: Documentation
+    url: https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html
+  - type: GraphQL
+    url: graphql/elastic-stack-graphql.md
+- aid: elastic-stack:elastic-stack-cluster-api
+  name: Elastic Stack Cluster API
+  description: The Cluster API from Elastic Stack — 1 operation(s) for cluster.
+  humanURL: https://www.elastic.co/elasticsearch/
+  baseURL: https://localhost:9200
+  tags:
+  - Cluster
+  properties:
+  - type: OpenAPI
+    url: openapi/elastic-stack-cluster-api-openapi.yml
+  - type: Documentation
+    url: https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html
+  - type: GraphQL
+    url: graphql/elastic-stack-graphql.md
+- aid: elastic-stack:elastic-stack-doc-api
+  name: Elastic Stack Doc API
+  description: The Doc API from Elastic Stack — 1 operation(s) for doc.
+  humanURL: https://www.elastic.co/elasticsearch/
+  baseURL: https://localhost:9200
+  tags:
+  - Doc
+  properties:
+  - type: OpenAPI
+    url: openapi/elastic-stack-doc-api-openapi.yml
+  - type: Documentation
+    url: https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html
+  - type: GraphQL
+    url: graphql/elastic-stack-graphql.md
+- aid: elastic-stack:elastic-stack-elasticsearch-api-api
+  name: Elastic Stack Elasticsearch API API
+  description: The Elasticsearch API API from Elastic Stack — 1 operation(s) for elasticsearch api.
+  humanURL: https://www.elastic.co/elasticsearch/
+  baseURL: https://localhost:9200
+  tags:
+  - Elasticsearch API
+  properties:
+  - type: OpenAPI
+    url: openapi/elastic-stack-elasticsearch-api-api-openapi.yml
+  - type: Documentation
+    url: https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html
+  - type: GraphQL
+    url: graphql/elastic-stack-graphql.md
+- aid: elastic-stack:elastic-stack-search-api
+  name: Elastic Stack Search API
+  description: The Search API from Elastic Stack — 1 operation(s) for search.
+  humanURL: https://www.elastic.co/elasticsearch/
+  baseURL: https://localhost:9200
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/elastic-stack-search-api-openapi.yml
+  - type: Documentation
+    url: https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html
+  - type: GraphQL
+    url: graphql/elastic-stack-graphql.md
+- aid: elastic-stack:elastic-stack-settings-api
+  name: Elastic Stack Settings API
+  description: The Settings API from Elastic Stack — 1 operation(s) for settings.
+  humanURL: https://www.elastic.co/elasticsearch/
+  baseURL: https://localhost:9200
+  tags:
+  - Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/elastic-stack-settings-api-openapi.yml
+  - type: Documentation
+    url: https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html
+  - type: GraphQL
+    url: graphql/elastic-stack-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/elastic-stack-agentic-access.yml
