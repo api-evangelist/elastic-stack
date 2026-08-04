@@ -1,0 +1,174 @@
+openapi: 3.1.0
+info:
+  title: Elasticsearch API
+  description: >-
+    Distributed search and analytics engine REST API for indexing, searching,
+    and analyzing data at scale. Endpoints are derived from the public
+    Elasticsearch REST APIs reference and represent the most commonly used
+    operations.
+  version: "1.0.0"
+  x-generated-from: https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+  - url: https://localhost:9200
+    description: Default local Elasticsearch endpoint
+paths:
+  /_cluster/health:
+    get:
+      summary: Get cluster health
+      operationId: getClusterHealth
+      responses:
+        "200":
+          description: Cluster health response
+          content:
+            application/json:
+              schema:
+                type: object
+  /{index}/_search:
+    parameters:
+      - name: index
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Search documents in an index
+      operationId: searchIndexGet
+      responses:
+        "200":
+          description: Search response
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      summary: Search documents in an index with request body
+      operationId: searchIndexPost
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Search response
+          content:
+            application/json:
+              schema:
+                type: object
+  /{index}/_doc/{id}:
+    parameters:
+      - name: index
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get document by ID
+      operationId: getDocument
+      responses:
+        "200":
+          description: Document response
+          content:
+            application/json:
+              schema:
+                type: object
+    put:
+      summary: Index document with explicit ID
+      operationId: putDocument
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Index response
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      summary: Delete document by ID
+      operationId: deleteDocument
+      responses:
+        "200":
+          description: Delete response
+          content:
+            application/json:
+              schema:
+                type: object
+  /_bulk:
+    post:
+      summary: Bulk operations
+      operationId: bulkOperations
+      requestBody:
+        required: true
+        content:
+          application/x-ndjson:
+            schema:
+              type: string
+      responses:
+        "200":
+          description: Bulk response
+          content:
+            application/json:
+              schema:
+                type: object
+  /{index}:
+    parameters:
+      - name: index
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      summary: Create index
+      operationId: createIndex
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Index creation response
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      summary: Delete index
+      operationId: deleteIndex
+      responses:
+        "200":
+          description: Index deletion response
+          content:
+            application/json:
+              schema:
+                type: object
+  /{index}/_settings:
+    parameters:
+      - name: index
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get index settings
+      operationId: getIndexSettings
+      responses:
+        "200":
+          description: Settings response
+          content:
+            application/json:
+              schema:
+                type: object

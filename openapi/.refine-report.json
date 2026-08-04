@@ -1,0 +1,24 @@
+{
+  "provider": "elastic-stack",
+  "sources": [
+    "elastic-stack-bulk-api-openapi.yml",
+    "elastic-stack-cluster-api-openapi.yml",
+    "elastic-stack-doc-api-openapi.yml",
+    "elastic-stack-elasticsearch-api-api-openapi.yml",
+    "elastic-stack-search-api-openapi.yml",
+    "elastic-stack-settings-api-openapi.yml"
+  ],
+  "outputs": [
+    "elastic-stack-bulk-api-openapi.yml",
+    "elastic-stack-cluster-api-openapi.yml",
+    "elastic-stack-doc-api-openapi.yml",
+    "elastic-stack-elasticsearch-api-api-openapi.yml",
+    "elastic-stack-search-api-openapi.yml",
+    "elastic-stack-settings-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
