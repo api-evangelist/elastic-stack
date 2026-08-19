@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Elasticsearch Bulk Search API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search documents in an index",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://localhost:9200/:index/_search",
+            "params": [
+              {
+                "name": "index",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Search documents in an index"
+        },
+        {
+          "info": {
+            "name": "Search documents in an index with request body",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:9200/:index/_search",
+            "params": [
+              {
+                "name": "index",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search documents in an index with request body"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

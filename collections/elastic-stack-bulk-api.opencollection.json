@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Elasticsearch Bulk API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bulk",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bulk operations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://localhost:9200/_bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk operations"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
