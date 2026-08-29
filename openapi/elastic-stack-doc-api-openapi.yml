@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Elasticsearch Bulk Doc API
   description: Distributed search and analytics engine REST API for indexing, searching, and analyzing data at scale. Endpoints are derived from the public Elasticsearch REST APIs reference and represent the most commonly used operations.

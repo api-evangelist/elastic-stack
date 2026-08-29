@@ -19,6 +19,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "elastic-stack-bulk-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "elastic-stack-cluster-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "elastic-stack-doc-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "elastic-stack-elasticsearch-api-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "elastic-stack-search-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "elastic-stack-settings-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

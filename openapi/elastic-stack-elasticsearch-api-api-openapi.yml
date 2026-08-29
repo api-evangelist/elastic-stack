@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Elasticsearch Bulk Elasticsearch API API
+  title: Elasticsearch Bulk Elasticsearch API
   description: Distributed search and analytics engine REST API for indexing, searching, and analyzing data at scale. Endpoints are derived from the public Elasticsearch REST APIs reference and represent the most commonly used operations.
   version: 1.0.0
   x-generated-from: https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html

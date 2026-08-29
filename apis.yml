@@ -174,3 +174,5 @@ integrations:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-parent: elastic
+x-relationship: product
