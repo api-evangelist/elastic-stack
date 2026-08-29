@@ -6,6 +6,18 @@ description: The Elastic Stack (formerly known as the ELK Stack) is a collection
   includes Elasticsearch for search and analytics, Kibana for visualization, Logstash
   for data processing, and Beats for data shipping.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
