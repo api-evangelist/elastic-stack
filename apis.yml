@@ -1,10 +1,9 @@
 aid: elastic-stack
 name: Elastic Stack
-description: The Elastic Stack (formerly known as the ELK Stack) is a collection of
-  open-source products from Elastic designed to help users take data from any source,
-  in any format, and search, analyze, and visualize that data in real-time. The stack
-  includes Elasticsearch for search and analytics, Kibana for visualization, Logstash
-  for data processing, and Beats for data shipping.
+description: The Elastic Stack (formerly known as the ELK Stack) is a collection of open-source products
+  from Elastic designed to help users take data from any source, in any format, and search, analyze, and
+  visualize that data in real-time. The stack includes Elasticsearch for search and analytics, Kibana
+  for visualization, Logstash for data processing, and Beats for data shipping.
 type: Index
 deliveryModel:
   model: saas
@@ -39,16 +38,15 @@ tags:
 - Search
 url: https://www.elastic.co/elastic-stack/
 created: '2024-01-01'
-modified: '2026-05-19'
+modified: '2026-09-16'
 position: Consuming
 access: 3rd-Party
 specificationVersion: '0.23'
 apis:
 - aid: elastic-stack:kibana-api
   name: Kibana API
-  description: >-
-    Data visualization and exploration tool API for Elasticsearch, providing dashboards, saved objects,
-    alerting, and spaces management.
+  description: Data visualization and exploration tool API for Elasticsearch, providing dashboards, saved
+    objects, alerting, and spaces management.
   humanURL: https://www.elastic.co/kibana/
   baseURL: https://localhost:5601/api
   tags:
@@ -101,7 +99,7 @@ apis:
   - type: GraphQL
     url: graphql/elastic-stack-graphql.md
 - aid: elastic-stack:elastic-stack-elasticsearch-api-api
-  name: Elastic Stack Elasticsearch API API
+  name: Elastic Stack Elasticsearch API
   description: The Elasticsearch API API from Elastic Stack — 1 operation(s) for elasticsearch api.
   humanURL: https://www.elastic.co/elasticsearch/
   baseURL: https://localhost:9200
